@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('players', function (Blueprint $table) {
+        Schema::create('player_team', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Имя игрока
-            $table->decimal('rating', 5, 2)->default(0); // Рейтинг
-            $table->decimal('coefficient', 5, 2)->default(0); // Коэффициент
-            $table->softDeletes(); // Мягкое удаление
+            $table->foreignId('player_id')->constrained()->onDelete('cascade');
+            $table->foreignId('team_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('players');
+        Schema::dropIfExists('player_team');
     }
 };
