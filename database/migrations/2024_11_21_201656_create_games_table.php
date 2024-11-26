@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id(); // ID игры
-            $table->string('name'); // Название игры
+            $table->string('name')->default('No name'); // Название игры
             $table->date('date'); // Дата проведения игры
             $table->boolean('is_balanced')->default(true); // Сбалансирована ли разбивка
             $table->timestamps(); // created_at, updated_at

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
-            $table->integer('points')->default(0);
+            $table->integer('score')->default(0);
             $table->timestamps();
         });
     }

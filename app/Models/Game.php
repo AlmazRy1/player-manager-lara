@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Game extends Model
 {
@@ -14,8 +16,10 @@ class Game extends Model
         'is_balanced',
     ];
 
-    public function players()
+    // Одна игра имеет много команд
+    public function teams()
     {
-        return $this->belongsToMany(Player::class)->withPivot('team'); // Связь "многие ко многим"
+        return $this->hasMany(Team::class);
     }
+
 }

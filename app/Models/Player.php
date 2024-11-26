@@ -11,4 +11,10 @@ class Player extends Model
         'rating',
         'coefficient', // если такие поля есть
     ];
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'player_team');
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Team;
 use App\Models\Player;
 use Illuminate\Http\Request;
 
@@ -22,55 +23,69 @@ class GameController extends Controller
         return view('games.create', compact('players')); // Возврат формы создания игры
     }
 
-    // Сохранение новой игры
     public function store(Request $request)
     {
+        // Валидация данных
         $validated = $request->validate([
             'date' => 'required|date',
-            'teams' => 'required|array',
-            'teams.*.players' => 'required|array|min:1',
+            'team_count' => 'required|integer|min:2',
+            'players_per_team' => 'required|integer|min:1',
+            'is_balanced' => 'required|boolean',
+            'players' => 'required|array|min:2', // Должно быть выбрано минимум 2 игрока
         ]);
 
+        // Создание игры
         $game = Game::create([
             'date' => $validated['date'],
+            'is_balanced' => $validated['is_balanced'],
+            'name' => 'Игра ' . $validated['date'],
         ]);
 
-        foreach ($validated['teams'] as $team) {
-            $teamModel = $game->teams()->create();
-            $teamModel->players()->sync($team['players']);
+        // Разделение игроков по командам
+        $players = collect($validated['players'])->shuffle();
+        $playersPerTeam = $players->chunk($validated['players_per_team']);
+
+        // Создание команд
+        foreach ($playersPerTeam as $playersInTeam) {
+            $team = $game->teams()->create(); // game_id заполняется автоматически
+            $team->players()->sync($playersInTeam->toArray()); // Привязываем игроков к команде
         }
 
-        return redirect()->route('games.index')->with('success', 'Игра успешно создана!');
+        // Перенаправление после успешного сохранения
+        return redirect()->route('games.index')->with('success', 'Игра успешно создана.');
     }
 
     // Форма редактирования игры
     public function edit(Game $game)
     {
-        $players = Player::all(); // Получение всех игроков
         $game->load('teams.players'); // Загрузка команд и игроков игры
-        return view('games.edit', compact('game', 'players')); // Возврат формы редактирования игры
+        $players = Player::all(); // Все игроки
+
+        return view('games.edit', compact('game', 'players'));
     }
 
-    // Обновление данных игры
-    public function update(Request $request, Game $game)
+
+    public function update(Request $request, $id)
     {
-        $validated = $request->validate([
-            'date' => 'required|date',
-            'teams' => 'required|array',
-            'teams.*.players' => 'required|array|min:1',
-        ]);
+        $game = Game::findOrFail($id);
 
+        // Обновляем дату игры
         $game->update([
-            'date' => $validated['date'],
+            'date' => $request->input('date'),
         ]);
 
-        $game->teams()->delete(); // Удаляем старые команды
-        foreach ($validated['teams'] as $team) {
-            $teamModel = $game->teams()->create();
-            $teamModel->players()->sync($team['players']);
+        // Обновляем очки каждой команды
+        foreach ($request->input('teams', []) as $teamId => $teamData) {
+            $team = Team::find($teamId);
+
+            if ($team) {
+                $team->update([
+                    'score' => $teamData['score'], // Сохраняем новые очки
+                ]);
+            }
         }
 
-        return redirect()->route('games.index')->with('success', 'Игра успешно обновлена!');
+        return redirect()->route('games.index')->with('success', 'Игра успешно обновлена.');
     }
 
     // Удаление игры

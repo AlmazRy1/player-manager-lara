@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); // Имя игрока
             $table->decimal('rating', 5, 2)->default(0); // Рейтинг
-            $table->decimal('coefficient', 5, 2)->default(0); // Коэффициент
+            $table->decimal('coefficient', 5, 2)->default(0); // Коэфф.
             $table->softDeletes(); // Мягкое удаление
             $table->timestamps();
         });
