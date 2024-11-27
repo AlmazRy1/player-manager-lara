@@ -1,0 +1,21 @@
+app = "player-manager"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[build]
+  image = "player-manager-lara-img"  # укажите имя вашего образа Docker
+
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+  
+  [services.ports]
+    http = 80
+    https = 443
+
+  [services.tcp_checks]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "30s"
+    max_consecutive_failures = 3
