@@ -12,7 +12,7 @@ class GameController extends Controller
     // Список всех игр
     public function index()
     {
-        $games = Game::with('teams.players')->get(); // Загрузка всех игр с командами и игроками
+        $games = Game::with('teams.players')->orderByDesc('date')->get(); // Загрузка всех игр с командами и игроками
         return view('games.index', compact('games')); // Возврат на страницу списка игр
     }
 
@@ -33,7 +33,7 @@ class GameController extends Controller
             'is_balanced' => 'required|boolean',
             'players' => 'required|array|min:2', // Должно быть выбрано минимум 2 игрока
         ]);
-
+        
         // Создание игры
         $game = Game::create([
             'date' => $validated['date'],
@@ -79,9 +79,15 @@ class GameController extends Controller
             $team = Team::find($teamId);
 
             if ($team) {
+                // Обновляем очки команды
                 $team->update([
-                    'score' => $teamData['score'], // Сохраняем новые очки
+                    'score' => $teamData['score'],
                 ]);
+
+                // Обновляем рейтинг всех игроков команды
+                foreach ($team->players as $player) {
+                    $player->recalculateRating();
+                }
             }
         }
 
