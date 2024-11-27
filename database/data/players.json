@@ -1,0 +1,506 @@
+[
+    {
+        "id": "1",
+        "name": "Абдыбек",
+        "rating": "9.00",
+        "rating_imported": "9.00",
+        "coefficient": "0.5",
+        "coefficient_imported": "0.5",
+        "games_count_imported": "2"
+    },
+    {
+        "id": "2",
+        "name": "Абдумажит",
+        "rating": "12.60",
+        "rating_imported": "12.60",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "1"
+    },
+    {
+        "id": "3",
+        "name": "Адмирал",
+        "rating": "12.38",
+        "rating_imported": "12.38",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "42"
+    },
+    {
+        "id": "4",
+        "name": "Азамат",
+        "rating": "11.50",
+        "rating_imported": "11.50",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "36"
+    },
+    {
+        "id": "5",
+        "name": "Азамат (Ош)",
+        "rating": "8.10",
+        "rating_imported": "8.10",
+        "coefficient": "0.9",
+        "coefficient_imported": "0.9",
+        "games_count_imported": "1"
+    },
+    {
+        "id": "6",
+        "name": "Азамат (М)",
+        "rating": "10.06",
+        "rating_imported": "10.06",
+        "coefficient": "0.85",
+        "coefficient_imported": "0.85",
+        "games_count_imported": "49"
+    },
+    {
+        "id": "7",
+        "name": "Азамат-2 (М)",
+        "rating": "9.15",
+        "rating_imported": "9.15",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "88"
+    },
+    {
+        "id": "8",
+        "name": "Азам",
+        "rating": "10.96",
+        "rating_imported": "10.96",
+        "coefficient": "0.9",
+        "coefficient_imported": "0.9",
+        "games_count_imported": "98"
+    },
+    {
+        "id": "9",
+        "name": "Азат",
+        "rating": "7.53",
+        "rating_imported": "7.53",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "48"
+    },
+    {
+        "id": "10",
+        "name": "Азат (Арни)",
+        "rating": "11.19",
+        "rating_imported": "11.19",
+        "coefficient": "0.95",
+        "coefficient_imported": "0.95",
+        "games_count_imported": "55"
+    },
+    {
+        "id": "11",
+        "name": "Азат (К)",
+        "rating": "8.00",
+        "rating_imported": "8.00",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "1"
+    },
+    {
+        "id": "12",
+        "name": "Айдар",
+        "rating": "5.55",
+        "rating_imported": "5.55",
+        "coefficient": "0.5",
+        "coefficient_imported": "0.5",
+        "games_count_imported": "76"
+    },
+    {
+        "id": "13",
+        "name": "Алибек",
+        "rating": "8.31",
+        "rating_imported": "8.31",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "39"
+    },
+    {
+        "id": "14",
+        "name": "Алмаз (Мазя)",
+        "rating": "9.28",
+        "rating_imported": "9.28",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "83"
+    },
+    {
+        "id": "15",
+        "name": "Алмаз (Ч)",
+        "rating": "6.22",
+        "rating_imported": "6.22",
+        "coefficient": "0.55",
+        "coefficient_imported": "0.55",
+        "games_count_imported": "62"
+    },
+    {
+        "id": "16",
+        "name": "Альберт",
+        "rating": "7.70",
+        "rating_imported": "7.70",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "1"
+    },
+    {
+        "id": "17",
+        "name": "Арген",
+        "rating": "4.00",
+        "rating_imported": "4.00",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 18,
+        "name": "Артур",
+        "rating": "4.53",
+        "rating_imported": "4.53",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "3"
+    },
+    {
+        "id": 19,
+        "name": "Бактияр",
+        "rating": "9.60",
+        "rating_imported": "9.60",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 20,
+        "name": "Болот",
+        "rating": "4.00",
+        "rating_imported": "4.00",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 21,
+        "name": "Данар",
+        "rating": "7.99",
+        "rating_imported": "7.99",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "72"
+    },
+    {
+        "id": 22,
+        "name": "Данияр",
+        "rating": "10.00",
+        "rating_imported": "10.00",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 23,
+        "name": "Денис",
+        "rating": "11.61",
+        "rating_imported": "11.61",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "113"
+    },
+    {
+        "id": 24,
+        "name": "Дэниел",
+        "rating": "6.50",
+        "rating_imported": "6.50",
+        "coefficient": "0.5",
+        "coefficient_imported": "0.5",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 25,
+        "name": "Жаныбек",
+        "rating": "8.54",
+        "rating_imported": "8.54",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "5"
+    },
+    {
+        "id": 26,
+        "name": "Жылдызбек",
+        "rating": "5.08",
+        "rating_imported": "5.08",
+        "coefficient": "0.5",
+        "coefficient_imported": "0.5",
+        "games_count_imported": "113"
+    },
+    {
+        "id": 27,
+        "name": "Ислам",
+        "rating": "9.71",
+        "rating_imported": "9.71",
+        "coefficient": "0.9",
+        "coefficient_imported": "0.9",
+        "games_count_imported": "74"
+    },
+    {
+        "id": 28,
+        "name": "Канат",
+        "rating": "9.89",
+        "rating_imported": "9.89",
+        "coefficient": "0.9",
+        "coefficient_imported": "0.9",
+        "games_count_imported": "103"
+    },
+    {
+        "id": 29,
+        "name": "Канат (Ч)",
+        "rating": "11.04",
+        "rating_imported": "11.04",
+        "coefficient": "0.95",
+        "coefficient_imported": "0.95",
+        "games_count_imported": "106"
+    },
+    {
+        "id": 30,
+        "name": "Каныбек",
+        "rating": "11.06",
+        "rating_imported": "11.06",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "17"
+    },
+    {
+        "id": 31,
+        "name": "Кумар",
+        "rating": "8.84",
+        "rating_imported": "8.84",
+        "coefficient": "0.75",
+        "coefficient_imported": "0.75",
+        "games_count_imported": "33"
+    },
+    {
+        "id": 32,
+        "name": "Максат",
+        "rating": "11.00",
+        "rating_imported": "11.00",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 33,
+        "name": "Максат (А)",
+        "rating": "5.67",
+        "rating_imported": "5.67",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "3"
+    },
+    {
+        "id": 34,
+        "name": "Марат",
+        "rating": "8.00",
+        "rating_imported": "8.00",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 35,
+        "name": "Марс",
+        "rating": "6.86",
+        "rating_imported": "6.86",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "7"
+    },
+    {
+        "id": 36,
+        "name": "Нарын",
+        "rating": "6.12",
+        "rating_imported": "6.12",
+        "coefficient": "0.5",
+        "coefficient_imported": "0.5",
+        "games_count_imported": "72"
+    },
+    {
+        "id": 37,
+        "name": "Нияз",
+        "rating": "8.18",
+        "rating_imported": "8.18",
+        "coefficient": "0.85",
+        "coefficient_imported": "0.85",
+        "games_count_imported": "24"
+    },
+    {
+        "id": 38,
+        "name": "Нурлан",
+        "rating": "5.87",
+        "rating_imported": "5.87",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "3"
+    },
+    {
+        "id": 39,
+        "name": "Нурлан (Ж)",
+        "rating": "8.00",
+        "rating_imported": "8.00",
+        "coefficient": "0.75",
+        "coefficient_imported": "0.75",
+        "games_count_imported": "70"
+    },
+    {
+        "id": 40,
+        "name": "Омурбек",
+        "rating": "13.00",
+        "rating_imported": "13.00",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 41,
+        "name": "Руслан",
+        "rating": "8.60",
+        "rating_imported": "8.60",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "47"
+    },
+    {
+        "id": 42,
+        "name": "Руслан (Ч)",
+        "rating": "7.79",
+        "rating_imported": "7.79",
+        "coefficient": "0.75",
+        "coefficient_imported": "0.75",
+        "games_count_imported": "51"
+    },
+    {
+        "id": 43,
+        "name": "Руслан (Р)",
+        "rating": "7.73",
+        "rating_imported": "7.73",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "27"
+    },
+    {
+        "id": 44,
+        "name": "Руслан (Д)",
+        "rating": "13.00",
+        "rating_imported": "13.00",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 45,
+        "name": "Самат",
+        "rating": "10.17",
+        "rating_imported": "10.17",
+        "coefficient": "0.9",
+        "coefficient_imported": "0.9",
+        "games_count_imported": "40"
+    },
+    {
+        "id": 46,
+        "name": "Самат (М)",
+        "rating": "11.92",
+        "rating_imported": "11.92",
+        "coefficient": "1",
+        "coefficient_imported": "1",
+        "games_count_imported": "12"
+    },
+    {
+        "id": 47,
+        "name": "Улукбек",
+        "rating": "11.90",
+        "rating_imported": "11.90",
+        "coefficient": "1.05",
+        "coefficient_imported": "1.05",
+        "games_count_imported": "57"
+    },
+    {
+        "id": 48,
+        "name": "Улукбек (Б)",
+        "rating": "10.40",
+        "rating_imported": "10.40",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "1"
+    },
+    {
+        "id": 49,
+        "name": "Умар",
+        "rating": "8.10",
+        "rating_imported": "8.10",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "25"
+    },
+    {
+        "id": 50,
+        "name": "Чынгыз",
+        "rating": "8.00",
+        "rating_imported": "8.00",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "18"
+    },
+    {
+        "id": 51,
+        "name": "Шабдан",
+        "rating": "8.66",
+        "rating_imported": "8.66",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "29"
+    },
+    {
+        "id": 52,
+        "name": "Эдиль",
+        "rating": "8.00",
+        "rating_imported": "8.00",
+        "coefficient": "0.7",
+        "coefficient_imported": "0.7",
+        "games_count_imported": "97"
+    },
+    {
+        "id": 53,
+        "name": "Эмиль",
+        "rating": "8.73",
+        "rating_imported": "8.73",
+        "coefficient": "0.75",
+        "coefficient_imported": "0.75",
+        "games_count_imported": "65"
+    },
+    {
+        "id": 54,
+        "name": "Эркин",
+        "rating": "8.98",
+        "rating_imported": "8.98",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "13"
+    },
+    {
+        "id": 55,
+        "name": "Эрнс",
+        "rating": "6.75",
+        "rating_imported": "6.75",
+        "coefficient": "0.6",
+        "coefficient_imported": "0.6",
+        "games_count_imported": "90"
+    },
+    {
+        "id": 56,
+        "name": "Юруслан",
+        "rating": "10.15",
+        "rating_imported": "10.15",
+        "coefficient": "0.8",
+        "coefficient_imported": "0.8",
+        "games_count_imported": "15"
+    }
+]
