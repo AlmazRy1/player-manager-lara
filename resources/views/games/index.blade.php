@@ -3,44 +3,49 @@
 @section('content')
 <div class="container">
     <h1 class="text-center">Список игр</h1>
-    <a href="{{ route('games.create') }}" class="btn btn-success mb-3 w-100">Создать игру</a>
+    <a href="{{ route('games.create') }}" class="btn btn-success mb-3 w-100 d-none d-md-block">Создать игру</a>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>Дата</th>
-                    <th>Команды</th>
-                    <th>Действия</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($games as $game)
-                <tr>
-                    <td>{{ $game->date }}</td>
-                    <td>
-                        @foreach ($game->teams as $team)
-                            <strong>Команда {{ $loop->iteration }}</strong>:
-                            @foreach ($team->players as $player)
-                                {{ $player->name }} ({{ $player->rating }}),
-                            @endforeach
-                            <br>
-                        @endforeach
-                    </td>
-                    <td>
-                        <div class="d-flex flex-column gap-2">
-                            <a href="{{ route('games.edit', $game->id) }}" class="btn btn-primary btn-sm w-100">Изменить</a>
-                            <button class="btn btn-danger btn-sm w-100" onclick="confirmDelete({{ $game->id }})">Удалить</button>
+    <div class="games-list">
+        @foreach ($games as $game)
+        <div class="game bg-light rounded border mb-3 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 class="fs-5 fw-bold mb-0">{{ $game->date }}</h3>
+                <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#game-{{ $game->id }}" aria-expanded="false">
+                    Подробнее
+                </button>
+            </div>
+            <div class="collapse mt-3" id="game-{{ $game->id }}">
+                <div class="row row-cols-1 row-cols-md-3 g-3">
+                    @foreach ($game->teams as $team)
+                    <div class="col">
+                        <div class="p-3 bg-light rounded border">
+                            <strong>Команда {{ $loop->iteration }}</strong>
+                            <ul class="list-unstyled">
+                                @foreach ($team->players as $player)
+                                <li>{{ $player->name }} ({{ $player->rating }})</li>
+                                @endforeach
+                            </ul>
                         </div>
-                        <form id="delete-form-{{ $game->id }}" action="{{ route('games.destroy', $game->id) }}" method="POST" style="display: none;">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="d-flex flex-column gap-2 mt-3">
+                    <a href="{{ route('games.edit', $game->id) }}" class="btn btn-primary btn-sm w-100 py-2">Изменить</a>
+                    <button class="btn btn-danger btn-sm w-100 py-2" onclick="confirmDelete({{ $game->id }})">Удалить</button>
+                </div>
+                <form id="delete-form-{{ $game->id }}" action="{{ route('games.destroy', $game->id) }}" method="POST" style="display: none;">
+                    @csrf
+                    @method('DELETE')
+                </form>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+
+<div class="d-md-none fixed-bottom bg-white border-top py-2">
+    <div class="container text-center">
+        <a href="{{ route('games.create') }}" class="btn btn-success w-100">Создать игру</a>
     </div>
 </div>
 

@@ -12,7 +12,12 @@ class GameController extends Controller
     // Список всех игр
     public function index()
     {
-        $games = Game::with('teams.players')->orderByDesc('date')->get(); // Загрузка всех игр с командами и игроками
+        // $games = Game::with('teams.players')->orderByDesc('date')->get(); // Загрузка всех игр с командами и игроками
+        $games = Game::with([
+            'teams.players' => function ($query) {
+                $query->orderBy('rating', 'desc'); // Сортировка игроков по убыванию рейтинга
+            }
+        ])->orderByDesc('date')->get();
         return view('games.index', compact('games')); // Возврат на страницу списка игр
     }
 
