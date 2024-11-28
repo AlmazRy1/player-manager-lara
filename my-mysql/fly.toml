@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for my-mysql-delicate-surf-7 on 2024-11-28T01:11:31+06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'my-mysql-delicate-surf-7'
+primary_region = 'waw'
+
+[build]
+  image = 'mysql:5.7'
+
+[env]
+  MYSQL_DATABASE = 'teambalance-lara-db'
+  MYSQL_USER = 'sail'
+
+[processes]
+  app = '--datadir /data/mysql'
+
+[[mounts]]
+  source = 'mysqldata'
+  destination = '/data'
+
+[[vm]]
+  memory = '512mb'
+  cpu_kind = 'shared'
+  cpus = 1
