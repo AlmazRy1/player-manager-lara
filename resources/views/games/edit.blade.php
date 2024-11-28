@@ -21,7 +21,7 @@
                         <strong>Команда {{ $loop->iteration }}</strong>
                         <ul>
                             @foreach ($team->players as $player)
-                                <li>{{ $player->name }}</li>
+                                <li>{{ $player->name }} ({{ $player->rating }})</li>
                             @endforeach
                         </ul>
                         <div class="mb-3">

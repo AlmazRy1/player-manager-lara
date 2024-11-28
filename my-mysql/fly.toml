@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for my-mysql-delicate-surf-7 on 2024-11-28T01:11:31+06:00
+# fly.toml app configuration file generated for my-mysql-old-feather-3639 on 2024-11-28T00:46:49+06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,18 +9,38 @@ primary_region = 'waw'
 [build]
   image = 'mysql:5.7'
 
-[env]
-  MYSQL_DATABASE = 'teambalance-lara-db'
-  MYSQL_USER = 'sail'
-
-[processes]
-  app = '--datadir /data/mysql'
-
-[[mounts]]
-  source = 'mysqldata'
-  destination = '/data'
-
 [[vm]]
   memory = '512mb'
   cpu_kind = 'shared'
   cpus = 1
+
+# The [processes] section is different for 8+, 8.4, and 5.7. Use the one that matches your version.
+# Use the following for versions 8 to 8.3:
+# [processes]
+#  app = """--datadir /data/mysql \
+#    --default-authentication-plugin mysql_native_password"""
+
+# Uncomment and use the following for 8.4:
+# [processes]
+#  app = """--datadir /data/mysql \
+#    --mysql-native-password=ON"""
+
+# Uncomment and use the following for 5.7:
+[processes]
+  app = "--datadir /data/mysql"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[mounts]
+  source = "mysqldata"
+  destination = "/data"
+
+[env]
+  MYSQL_DATABASE = "teambalance-lara-db"
+  MYSQL_USER = "sail"

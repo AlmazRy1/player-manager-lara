@@ -41,7 +41,7 @@
                             <div class="form-check form-switch me-3">
                                 <input type="checkbox" id="player_{{ $player->id }}" name="players[]" value="{{ $player->id }}" class="form-check-input">
                             </div>
-                            <label for="player_{{ $player->id }}" class="form-check-label fw-bold">{{ $player->name }}</label>
+                            <label for="player_{{ $player->id }}" class="form-check-label fw-bold">{{ $player->name }} ({{ $player->rating }})</label>
                         </div>
                     </div>
                 </div>
