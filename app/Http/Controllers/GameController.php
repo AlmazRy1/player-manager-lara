@@ -32,8 +32,43 @@ class GameController extends Controller
             'players_per_team' => 'required|integer|min:1',
             'is_balanced' => 'required|boolean',
             'players' => 'required|array|min:2', // Должно быть выбрано минимум 2 игрока
+            'players.*' => 'exists:players,id', // Проверяем, что ID существуют в таблице players
         ]);
         
+        $isBalanced = $validated['is_balanced'];
+        $teamsCount = $validated['players_per_team'];
+        $players = Player::whereIn('id', $validated['players'])->get();
+
+        // Создаем пустой массив для команд
+        $teams = collect(range(1, $teamsCount))->map(fn ($i) => collect());
+        if ($isBalanced) {
+            // Сбалансированное распределение
+            // Сортируем игроков по рейтингу (от самого сильного к самому слабому)
+            $players = $players->sortByDesc('rating');
+
+            // Инициализируем массив для суммарных рейтингов команд
+            $teamsRatings = array_fill(0, $teamsCount, 0); // Заполняем массив нулями, по количеству команд
+
+            foreach ($players as $player) {
+                // Находим команду с минимальным суммарным рейтингом
+                $minTeamIndex = array_search(min($teamsRatings), $teamsRatings); // Находим индекс команды с минимальным рейтингом
+                
+                // Добавляем игрока в эту команду
+                $teams[$minTeamIndex]->push($player);
+                
+                // Обновляем суммарный рейтинг этой команды
+                $teamsRatings[$minTeamIndex] += $player->rating;
+            }
+        } else {
+            // Случайное распределение
+            $players = $players->shuffle(); // Перемешиваем игроков случайным образом
+    
+            foreach ($players as $index => $player) {
+                // Добавляем игрока в команду с индексом (по кругу)
+                $teams[$index % $teamsCount]->push($player);
+            }
+        }
+
         // Создание игры
         $game = Game::create([
             'date' => $validated['date'],
@@ -41,14 +76,11 @@ class GameController extends Controller
             'name' => 'Игра ' . $validated['date'],
         ]);
 
-        // Разделение игроков по командам
-        $players = collect($validated['players'])->shuffle();
-        $playersPerTeam = $players->chunk($validated['players_per_team']);
-
         // Создание команд
-        foreach ($playersPerTeam as $playersInTeam) {
+        foreach ($teams as $playersInTeam) {
             $team = $game->teams()->create(); // game_id заполняется автоматически
-            $team->players()->sync($playersInTeam->toArray()); // Привязываем игроков к команде
+            // $team->players()->sync($playersInTeam->pluck('id')); // Привязываем игроков к команде
+            $team->players()->saveMany($playersInTeam); // Привязываем игроков к команде
         }
 
         // Перенаправление после успешного сохранения
@@ -63,7 +95,6 @@ class GameController extends Controller
 
         return view('games.edit', compact('game', 'players'));
     }
-
 
     public function update(Request $request, $id)
     {
