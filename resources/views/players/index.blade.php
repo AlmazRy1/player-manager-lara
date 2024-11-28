@@ -8,10 +8,10 @@
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
-                    <th>Имя</th>
-                    <th>Рейтинг</th>
-                    <th>Коэфф.</th>
-                    <th>Действия</th>
+                    <th class="small">Имя</th>
+                    <th class="small">Рейтинг</th>
+                    <th class="small">Коэф</th>
+                    <th class="small">Действия</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +34,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
     </div>
 </div>
 <div class="d-md-none fixed-bottom bg-white border-top py-2">

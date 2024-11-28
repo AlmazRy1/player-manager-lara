@@ -39,7 +39,7 @@ class GameController extends Controller
         ]);
         
         $isBalanced = $validated['is_balanced'];
-        $teamsCount = $validated['players_per_team'];
+        $teamsCount = $validated['team_count'];
         $players = Player::whereIn('id', $validated['players'])->get();
 
         // Создаем пустой массив для команд
