@@ -12,7 +12,6 @@ class GameController extends Controller
     // Список всех игр
     public function index()
     {
-        // $games = Game::with('teams.players')->orderByDesc('date')->get(); // Загрузка всех игр с командами и игроками
         $games = Game::with([
             'teams.players' => function ($query) {
                 $query->orderBy('rating', 'desc'); // Сортировка игроков по убыванию рейтинга
@@ -37,7 +36,6 @@ class GameController extends Controller
             'players_per_team' => 'required|integer|min:1',
             'is_balanced' => 'required|boolean',
             'players' => 'required|array|min:2', // Должно быть выбрано минимум 2 игрока
-            'players.*' => 'exists:players,id', // Проверяем, что ID существуют в таблице players
         ]);
         
         $isBalanced = $validated['is_balanced'];

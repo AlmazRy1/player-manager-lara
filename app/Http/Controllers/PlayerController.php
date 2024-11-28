@@ -22,8 +22,8 @@ class PlayerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'rating' => 'nullable|numeric|min:0|max:100',
-            'coefficient' => 'nullable|numeric|min:0|max:100',
+            'rating' => 'required|numeric|min:0|max:100',
+            'coefficient' => 'required|numeric|min:0|max:100',
         ]);
 
         Player::create($validated); // Создаем нового игрока
@@ -39,8 +39,8 @@ class PlayerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'rating' => 'nullable|numeric|min:0|max:100',
-            'coefficient' => 'nullable|numeric|min:0|max:100',
+            'rating' => 'required|numeric|min:0|max:100',
+            'coefficient' => 'required|numeric|min:0|max:100',
         ]);
 
         $player->update($validated); // Обновляем игрока
