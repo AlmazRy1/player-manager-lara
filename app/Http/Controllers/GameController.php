@@ -16,7 +16,7 @@ class GameController extends Controller
             'teams.players' => function ($query) {
                 $query->orderBy('rating', 'desc'); // Сортировка игроков по убыванию рейтинга
             }
-        ])->orderByDesc('date')->get();
+        ])->orderByDesc('created_at')->get();
         return view('games.index', compact('games')); // Возврат на страницу списка игр
     }
 
