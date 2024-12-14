@@ -33,7 +33,6 @@ class GameController extends Controller
         $validated = $request->validate([
             'date' => 'required|date',
             'team_count' => 'required|integer|min:2',
-            'players_per_team' => 'required|integer|min:1',
             'is_balanced' => 'required|boolean',
             'players' => 'required|array|min:2', // Должно быть выбрано минимум 2 игрока
         ]);
@@ -108,20 +107,32 @@ class GameController extends Controller
             'date' => $request->input('date'),
         ]);
 
-        // Обновляем очки каждой команды
-        foreach ($request->input('teams', []) as $teamId => $teamData) {
-            $team = Team::find($teamId);
+        // Получаем данные команд из запроса
+        $teamsData = $request->input('teams', []);
 
-            if ($team) {
-                // Обновляем очки команды
-                $team->update([
-                    'score' => $teamData['score'],
-                ]);
+        // Считаем сумму очков всех команд
+        $scoresOfAll = collect($teamsData)->sum(function ($teamData) {
+            return (int) $teamData['score'];
+        });
 
-                // Обновляем рейтинг всех игроков команды
-                foreach ($team->players as $player) {
-                    $player->recalculateRating();
-                }
+        // Если очки всех команд равны 0, завершаем выполнение
+        if ($scoresOfAll === 0) {
+            return redirect()->route('games.index')->with('success', 'Игра успешно обновлена.');
+        }
+
+        // Получаем команды одним запросом и загружаем игроков
+        $teamIds = array_keys($teamsData);
+        $teams = Team::whereIn('id', $teamIds)->with('players')->get();
+
+        foreach ($teams as $team) {
+            // Обновляем очки команды
+            $team->update([
+                'score' => $teamsData[$team->id]['score'],
+            ]);
+
+            // Обновляем рейтинг всех игроков команды
+            foreach ($team->players as $player) {
+                $player->recalculateRating();
             }
         }
 

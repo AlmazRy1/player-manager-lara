@@ -19,10 +19,20 @@
                     @foreach ($game->teams as $team)
                     <div class="col">
                         <div class="p-3 bg-light rounded border">
-                            <strong>Команда {{ $loop->iteration }}</strong>
+                            @php
+                                $totalRating = $team->players->sum('rating');
+                            @endphp
+                            <strong>Команда-{{ $loop->iteration }} (<span style="color:#fd790d">{{ $team->score }}</span>)</strong>
+                            <span style="font-size: 0.9rem; color:#0d6efd">
+                                [ {{ $totalRating }} ]
+                            </span>
                             <ul class="list-unstyled">
                                 @foreach ($team->players as $player)
-                                <li>{{ $player->name }} ({{ $player->rating }})</li>
+                                <li>{{ $player->name }}
+                                    <span style="font-size: 0.9rem; color:#0d6efd">
+                                    [ {{ $player->rating }} ]
+                                    </span>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>

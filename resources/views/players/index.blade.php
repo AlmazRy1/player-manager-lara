@@ -17,7 +17,11 @@
             <tbody>
                 @foreach ($players as $player)
                 <tr>
-                    <td>{{ $player->name }}</td>
+                    <td>
+                        {{ $player->name }}
+                        <br>
+                        <strong><span style="font-size: 0.9rem; color:#198754;">cыграно: {{ $player->games_count + $player->games_count_imported }}</span></strong>
+                    </td>
                     <td>{{ $player->rating }}</td>
                     <td>{{ $player->coefficient }}</td>
                     <td>

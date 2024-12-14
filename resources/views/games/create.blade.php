@@ -18,12 +18,6 @@
             <input type="number" id="team_count" name="team_count" min="2" class="form-control" required>
         </div>
 
-        <!-- Поле игроков в команде -->
-        <div class="mb-3">
-            <label for="players_per_team" class="form-label fw-bold">Игроков в команде:</label>
-            <input type="number" id="players_per_team" name="players_per_team" min="1" class="form-control" required>
-        </div>
-
         <!-- Чекбокс "Сбалансировать команды" -->
         <div class="form-check form-switch mb-4">
             <input type="checkbox" id="is_balanced" name="is_balanced" value="1" class="form-check-input" checked>
