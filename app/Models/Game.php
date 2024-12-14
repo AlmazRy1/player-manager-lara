@@ -22,4 +22,23 @@ class Game extends Model
         return $this->hasMany(Team::class);
     }
 
+    // Хук на событие удаления игры
+    protected static function booted()
+    {
+        static::deleted(function ($game) {
+            // Получаем все команды в этой игре
+            $teams = $game->teams()->with('players')->get();
+
+            // Собираем всех уникальных игроков через команды
+            $players = $teams->flatMap(function ($team) {
+                return $team->players; // Получаем игроков для каждой команды
+            })->unique('id'); // Убираем дублирующихся игроков по их ID
+
+            // Пересчитываем рейтинг для каждого уникального игрока
+            foreach ($players as $player) {
+                $player->recalculateRating(); // Вызов метода пересчета рейтинга
+            }
+        });
+    }
+
 }

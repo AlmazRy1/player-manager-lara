@@ -23,7 +23,11 @@ class Player extends Model
     public function recalculateRating()
     {
         // Получаем все команды игрока
-        $teams = $this->teams()->with('game')->get();
+        $teams = $this->teams()
+            ->whereHas('game', function ($query) {
+                $query->whereNull('deleted_at'); // Условие для исключения мягко удаленных игр
+            })
+            ->with('game')->get();
 
         // Считаем сумму всех очков команд и количество игр
         $totalScore = 0;
