@@ -43,7 +43,7 @@ class Player extends Model
             $oldTotalScore = $this->rating_imported / $this->coefficient_imported * $this->games_count_imported;
             $averageScore = ($totalScore + $oldTotalScore) / ($gameCount + $this->games_count_imported);
             $this->rating = $averageScore * $this->coefficient;
-            $this->games_count = $this->games_count_imported + $gameCount;
+            $this->games_count = $gameCount;
             $this->save();
         }
         

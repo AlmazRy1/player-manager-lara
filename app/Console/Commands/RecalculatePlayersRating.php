@@ -53,12 +53,10 @@ class RecalculatePlayersRating extends Command
                 $oldTotalScore = $player->rating_imported / $player->coefficient_imported * $player->games_count_imported;
                 $averageScore = ($totalScore + $oldTotalScore) / ($gameCount + $player->games_count_imported);
                 $player->rating = $averageScore * $player->coefficient;
-                $player->games_count = $player->games_count_imported + $gameCount;
+                $player->games_count = $gameCount;
                 $player->save();
                 $this->info("Player {$player->name} rating recalculated.");
             }
-
-            
         }
 
         $this->info('Rating recalculation completed successfully.');
